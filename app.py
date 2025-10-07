@@ -30,7 +30,6 @@ def get_gspread_client(spreadsheet_name=SHEET_NAME):
     """
     Create and Return an Authorized 'gspread' Client using the Service Account JSON.
     Load Credentials:
-    # Local: service_account.json file in working directory
     # Streamlit Cloud: put the JSON content into a Secret called "gcp_service_account"
     """
     if "GCP_SERVICE_ACCOUNT" in st.secrets:

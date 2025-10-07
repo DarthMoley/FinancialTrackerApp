@@ -5,6 +5,3 @@ pandas
 altair
 python-dateutil
 openpyxl
-json
-os
-io
