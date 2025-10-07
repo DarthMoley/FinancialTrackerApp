@@ -37,8 +37,6 @@ def get_gspread_client(spreadsheet_name=SHEET_NAME):
         # Streamlit Cloud Path: Secrets -> GCP_SERVICE_ACCOUNT (string contains JSON)
         info = st.secrets["GCP_SERVICE_ACCOUNT"]
         credentials = Credentials.from_service_account_info(info, scopes=SCOPES)
-    elif os.path.exists("service_account.json"):
-        credentials = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
     else:
         st.error("No Service Account Credentials found. Put service_account.json in this folder OR add GCP_SERVICE_ACCOUNT to Streamlit Secrets.")
         st.stop()
