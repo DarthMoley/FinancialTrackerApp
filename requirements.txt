@@ -1,0 +1,10 @@
+streamlit
+gspread
+google-auth
+pandas
+altair
+python-dateutil
+openpyxl
+json
+os
+io
