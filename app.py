@@ -13,6 +13,7 @@ from datetime import datetime, date
 import altair as alt
 from dateutil.relativedelta import relativedelta
 import os
+import json
 
 # Page Config
 st.set_page_config(page_title="Richman Finance Tracker", page_icon="💵", layout="centered")
@@ -30,12 +31,15 @@ def get_gspread_client(spreadsheet_name=SHEET_NAME):
     """
     Create and Return an Authorized 'gspread' Client using the Service Account JSON.
     Load Credentials:
+    # Local: service_account.json file in working directory
     # Streamlit Cloud: put the JSON content into a Secret called "gcp_service_account"
     """
     if "GCP_SERVICE_ACCOUNT" in st.secrets:
         # Streamlit Cloud Path: Secrets -> GCP_SERVICE_ACCOUNT (string contains JSON)
         info = st.secrets["GCP_SERVICE_ACCOUNT"]
         credentials = Credentials.from_service_account_info(info, scopes=SCOPES)
+    elif os.path.exists("service_account.json"):
+        credentials = Credentials.from_service_account_file("service_account.json", scopes=SCOPES)
     else:
         st.error("No Service Account Credentials found. Put service_account.json in this folder OR add GCP_SERVICE_ACCOUNT to Streamlit Secrets.")
         st.stop()

@@ -1,5 +1,4 @@
 -# Byte-compiled / optimized / DLL files
-service_account.json
 *.pyc
 __pycache__/
 *.py[cod]
